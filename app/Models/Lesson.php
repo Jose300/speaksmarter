@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public fucntion categories () {
+
+        return $this->belongsToMany(Category::class);
+
+    }
+
+    public fucntion level () {
+
+        return $this->belongsTo(Level::class);
+    }
 }
