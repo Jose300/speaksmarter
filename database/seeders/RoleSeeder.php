@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+
 class RoleSeeder extends Seeder
 {
     /**
@@ -48,8 +49,6 @@ class RoleSeeder extends Seeder
 
         //Le asignamos todos los permisos al Rol Editor
         $role_editor->syncPermissions($permissions_editor);
-
-
 
     }
 }

@@ -11,7 +11,7 @@ class Level extends Model
 
     protected $guarded = [];
 
-    public fucntion lessons () {
+    public function lessons () {
 
         return $this->belongsToMany(Lessons::class);
 
