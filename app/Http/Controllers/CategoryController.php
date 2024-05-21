@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Inertia\Response;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -11,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return "Hello World";
+        $categories = Category::paginate(25);
+        return inertia('Categories/index',['categories' => $categories]);
     }
 
     /**
@@ -19,15 +23,18 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia('Categories/create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+   
+
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->validate());
+        return redirect()->route('categories.index');
     }
 
     /**
