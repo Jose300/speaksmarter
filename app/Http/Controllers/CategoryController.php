@@ -14,6 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categories = [];
         $categories = Category::paginate(25);
         return inertia('Categories/index',['categories' => $categories]);
     }
@@ -33,7 +34,7 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        Category::create($request->validate());
+        Category::create($request->validated());
         return redirect()->route('categories.index');
     }
 

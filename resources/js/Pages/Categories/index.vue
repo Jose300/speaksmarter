@@ -55,11 +55,12 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr>
-					      <td class="border border-slate-300">{{ categories.id }}</td>
-					      <td class="border border-slate-300">{{ categories.name }}</td>
-					      <td class="border border-slate-300"><button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"></button></td>
-					      <td class="border border-slate-300"><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"></button></td>
+					    <!--Recorremos el objeto categories con el v-for -->
+					    <tr v-for="category in categories.data">
+					      <td class="border border-slate-300">{{ category.id }}</td>
+					      <td class="border border-slate-300">{{ category.name }}</td>
+					      <td class="border border-slate-300"><button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"><Link :href="route('categories.edit', category.id)">Edit</Link></button></td>
+					      <td class="border border-slate-300"><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><Link @click="deleteCategory(category.id)">Delete</Link></button></td>
 					    </tr>
 					  </tbody>
 					</table>
